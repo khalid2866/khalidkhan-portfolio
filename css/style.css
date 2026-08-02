@@ -51,6 +51,156 @@ body{
   overflow-x: hidden;
 }
 
+.video-container{
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+}
+
+.video-container video{
+    width:100%;
+    display:block;
+}
+
+/* ============================= */
+/* Glass Play Button */
+/* ============================= */
+
+.play-btn{
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    width:120px;
+    height:120px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:42px;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.25),
+        inset 0 -1px 1px rgba(255,255,255,.08);
+
+    transition:.45s ease;
+
+    overflow:hidden;
+}
+
+/* Shiny reflection */
+
+.play-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-60%;
+    left:-120%;
+
+    width:60%;
+    height:220%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:rotate(25deg);
+
+    transition:.7s;
+}
+
+.play-btn:hover::before{
+
+    left:160%;
+}
+
+/* Soft Glow */
+
+.play-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-12px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(120,120,255,.25);
+
+    animation:pulse 2.2s infinite;
+}
+
+/* Hover */
+
+.play-btn:hover{
+
+    transform:translate(-50%,-50%) scale(1.08);
+
+    background:rgba(255,255,255,.18);
+
+    box-shadow:
+        0 0 30px rgba(120,120,255,.45),
+        0 0 80px rgba(120,120,255,.25),
+        inset 0 1px 2px rgba(255,255,255,.4);
+}
+
+/* Click */
+
+.play-btn:active{
+
+    transform:translate(-50%,-50%) scale(.95);
+}
+
+/* Pulse Animation */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:.7;
+
+    }
+
+    70%{
+
+        transform:scale(1.18);
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
 a{ color: inherit; text-decoration: none; }
 ul{ list-style: none; margin: 0; padding: 0; }
 img, svg{ display: block; max-width: 100%; }
@@ -100,6 +250,7 @@ button{ font-family: inherit; cursor: pointer; }
   font-weight: 700;
   font-size: 20px;
   letter-spacing: -0.02em;
+  decoration: none;
 }
 
 .brand-mark{
@@ -133,6 +284,7 @@ button{ font-family: inherit; cursor: pointer; }
   color: var(--ink);
   position: relative;
   padding-bottom: 3px;
+ 
 }
 
 .nav-links a::after{

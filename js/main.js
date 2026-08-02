@@ -43,3 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+const heroVideo = document.getElementById("heroVideo");
+const playButton = document.getElementById("playButton");
+
+playButton.addEventListener("click", () => {
+
+    heroVideo.currentTime = 0; // Always start from beginning
+    heroVideo.play();
+
+    playButton.style.transform = "translate(-50%, -50%) scale(1.8)";
+    playButton.style.opacity = "0";
+
+    setTimeout(() => {
+        playButton.style.display = "none";
+    }, 500);
+
+});
+
+heroVideo.addEventListener("ended", () => {
+
+    playButton.style.display = "flex";
+    playButton.style.opacity = "1";
+    playButton.style.transform = "translate(-50%, -50%) scale(1)";
+
+});
